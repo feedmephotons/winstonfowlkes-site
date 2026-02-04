@@ -2,63 +2,47 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 grid-bg" />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/backgrounds/hero-abstract.png"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/30 via-[#0a0a0a]/60 to-[#0a0a0a]" />
+      </div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#00f0ff]/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#ff00ff]/10 rounded-full blur-[120px]" />
-
-      {/* Geometric Accents */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-        className="absolute top-20 right-20 w-64 h-64 border border-[#00f0ff]/20 rotate-45"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.7 }}
-        className="absolute bottom-32 left-20 w-48 h-48 border border-[#ff00ff]/20 rotate-12"
-      />
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Status Badge */}
+      <div className="container mx-auto px-6 lg:px-16 relative z-10">
+        <div className="max-w-4xl">
+          {/* Status Badge - Simple, not pulsing */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 glass-card px-4 py-2 mb-8"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-3 card px-4 py-2 mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-[#00f0ff] pulse-glow" />
-            <span className="text-xs font-display font-medium text-gray-300 uppercase tracking-wider">
+            <span className="status-dot" />
+            <span className="text-sm font-medium text-gray-400">
               Available for Projects
             </span>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline - NO neon glow */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-6"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-8 tracking-tight"
           >
             I design, build & automate{' '}
-            <span className="relative">
-              <span className="neon-text-cyan">modern digital systems</span>
-              <motion.span
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#00f0ff] to-[#ff00ff] origin-left"
-              />
-            </span>{' '}
+            <span className="text-[#00d4ff]">modern digital systems</span>{' '}
             that actually scale.
           </motion.h1>
 
@@ -66,8 +50,8 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-body text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12 leading-relaxed"
           >
             From cinematic visuals to AI-powered software — I help companies move faster,
             look better, and operate smarter.
@@ -77,58 +61,56 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4"
           >
-            <Link href="/contact" className="btn-primary text-lg px-8 py-4">
+            <Link href="/contact" className="btn-primary text-base px-8 py-4">
               Book a Consult
             </Link>
-            <Link href="/work" className="btn-secondary text-lg px-8 py-4">
+            <Link href="/work" className="btn-secondary text-base px-8 py-4">
               View Work
             </Link>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - Simplified */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-20 pt-12 border-t border-white/5"
           >
-            {[
-              { value: '50+', label: 'Projects Delivered' },
-              { value: '4', label: 'System Specialties' },
-              { value: '10+', label: 'Years Experience' },
-              { value: '100%', label: 'Client Satisfaction' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="font-display font-bold text-3xl md:text-4xl text-white mb-1">
-                  {stat.value}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
+              {[
+                { value: '50+', label: 'Projects Delivered' },
+                { value: '4', label: 'System Specialties' },
+                { value: '10+', label: 'Years Experience' },
+                { value: '100%', label: 'Client Satisfaction' },
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div className="font-display font-bold text-3xl md:text-4xl text-white mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-gray-500">{stat.label}</div>
                 </div>
-                <div className="font-body text-sm text-gray-500">{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Simplified */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center p-1.5"
         >
-          <motion.div
-            animate={{ opacity: [1, 0.3, 1] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1 h-2 bg-[#00f0ff] rounded-full"
-          />
+          <div className="w-1 h-2 bg-white/40 rounded-full" />
         </motion.div>
       </motion.div>
     </section>

@@ -30,14 +30,14 @@ export default function Navigation() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5'
+            ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-white/5'
             : 'bg-transparent'
         }`}
       >
-        <nav className="container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+        <nav className="container mx-auto px-6 lg:px-16 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-10">
             <Image
@@ -56,10 +56,9 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-display text-sm font-medium text-gray-300 hover:text-[#00f0ff] transition-colors duration-300 relative group"
+                className="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
             <Link
@@ -78,8 +77,7 @@ export default function Navigation() {
           >
             <motion.span
               animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-white origin-center transition-colors"
-              style={{ backgroundColor: isMobileMenuOpen ? '#00f0ff' : 'white' }}
+              className="w-6 h-0.5 bg-white origin-center"
             />
             <motion.span
               animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
@@ -87,8 +85,7 @@ export default function Navigation() {
             />
             <motion.span
               animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-white origin-center transition-colors"
-              style={{ backgroundColor: isMobileMenuOpen ? '#00f0ff' : 'white' }}
+              className="w-6 h-0.5 bg-white origin-center"
             />
           </button>
         </nav>
@@ -107,7 +104,7 @@ export default function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-[#0a0a0a]/95 backdrop-blur-xl"
+              className="absolute inset-0 bg-[#0a0a0a]/95 backdrop-blur-lg"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.nav
@@ -128,7 +125,7 @@ export default function Navigation() {
                     <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block font-display text-3xl font-semibold text-white hover:text-[#00f0ff] transition-colors"
+                      className="block font-display text-3xl font-semibold text-white hover:text-gray-300 transition-colors"
                     >
                       {link.label}
                     </Link>

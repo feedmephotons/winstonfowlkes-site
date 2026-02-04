@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 const footerLinks = {
   navigation: [
@@ -28,12 +27,9 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/5 bg-[#0a0a0a]">
-      {/* Grid Background */}
-      <div className="absolute inset-0 grid-bg opacity-30" />
-
-      <div className="container mx-auto px-6 md:px-12 relative">
+      <div className="container mx-auto px-6 lg:px-16 relative">
         {/* Main Footer Content */}
-        <div className="py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Image
@@ -43,17 +39,17 @@ export default function Footer() {
               height={44}
               className="h-10 w-auto mb-6"
             />
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 font-body">
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Design, build, and automate modern digital systems that actually scale.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {footerLinks.social.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 glass-card flex items-center justify-center text-gray-400 hover:text-[#00f0ff] hover:border-[#00f0ff]/30 transition-all duration-300 text-xs font-display font-semibold"
+                  className="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-[#222] transition-all duration-200 text-xs font-display font-semibold"
                 >
                   {social.icon}
                 </a>
@@ -71,7 +67,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[#00f0ff] transition-colors text-sm font-body"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -90,7 +86,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[#00f0ff] transition-colors text-sm font-body"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -108,7 +104,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:winston@winstonfowlkes.com"
-                  className="text-gray-400 hover:text-[#00f0ff] transition-colors text-sm font-body"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   winston@winstonfowlkes.com
                 </a>
@@ -116,12 +112,12 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:239-271-8495"
-                  className="text-gray-400 hover:text-[#00f0ff] transition-colors text-sm font-body"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   239-271-8495
                 </a>
               </li>
-              <li className="text-gray-400 text-sm font-body">
+              <li className="text-gray-400 text-sm">
                 Jacksonville, FL
               </li>
             </ul>
@@ -130,13 +126,12 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xs font-body">
+          <p className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} Winston Fowlkes. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-gray-500 text-xs">
-            <span className="w-2 h-2 rounded-full bg-[#00f0ff] pulse-glow" />
-            <span className="font-body">Systems Online</span>
-          </div>
+          <p className="text-gray-600 text-sm">
+            Jacksonville, FL
+          </p>
         </div>
       </div>
     </footer>
