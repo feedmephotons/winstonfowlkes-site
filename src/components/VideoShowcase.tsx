@@ -4,13 +4,55 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 
-// Real video IDs from Winston Fowlkes YouTube channel
+// Real video IDs from Winston Fowlkes YouTube channel - winstonfowlkes.com/video
 const videos = [
   {
     id: 'e9SFC_EQ7VQ',
     title: 'Chateau Green Shingle Re-Roof',
     client: 'Affinity Roofing',
     category: 'Commercial',
+  },
+  {
+    id: 'K0iGE3zu1KY',
+    title: 'Roofing & Construction Reel',
+    client: 'Various Clients',
+    category: 'Reel',
+  },
+  {
+    id: 'gMZE4tS5P2k',
+    title: 'Jason Springs Music Video',
+    client: 'Jason Springs',
+    category: 'Music Video',
+  },
+  {
+    id: '_ZZ62oRd5sM',
+    title: 'In Living Color Tattoo',
+    client: 'Amber Petaccio',
+    category: 'Business Promo',
+  },
+  {
+    id: '4LgswJO8aF8',
+    title: 'Sideline Barbershop',
+    client: 'Omar Soto',
+    category: 'Business Promo',
+  },
+  {
+    id: 'bO5Dg-OPDRY',
+    title: 'G&C Towing Promo',
+    client: 'G&C Towing',
+    category: 'Business Promo',
+  },
+  {
+    id: '0ooHKI35f0o',
+    title: 'Target Roofing - Admiralty House',
+    client: 'Target Roofing',
+    category: 'Commercial',
+  },
+  {
+    id: 'Zpxkg89HGpY',
+    title: 'Neural Portrait',
+    client: 'Personal Project',
+    category: 'Animation',
   },
   {
     id: '4Uw-jnIWdfI',
@@ -25,22 +67,16 @@ const videos = [
     category: 'Process',
   },
   {
-    id: 'K0iGE3zu1KY',
-    title: 'Roofing & Construction Reel',
-    client: 'Various Clients',
-    category: 'Reel',
+    id: 'wVP8gYlRKig',
+    title: 'Roof Assessment Explained',
+    client: 'Educational',
+    category: 'Explainer',
   },
   {
-    id: '_ZZ62oRd5sM',
-    title: 'In Living Color Tattoo',
-    client: 'Amber Petaccio',
-    category: 'Business Promo',
-  },
-  {
-    id: '4LgswJO8aF8',
-    title: 'Sideline Barbershop',
-    client: 'Omar Soto',
-    category: 'Business Promo',
+    id: 'qMWVLTZlAFQ',
+    title: "Target Roofing - St Ann's",
+    client: 'Target Roofing',
+    category: 'Commercial',
   },
 ];
 
