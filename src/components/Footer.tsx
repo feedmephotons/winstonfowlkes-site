@@ -26,20 +26,22 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-[#0a0a0a]">
-      <div className="container mx-auto px-6 lg:px-16 relative">
+    <footer className="border-t border-white/5 bg-black pt-16 pb-8">
+      <div className="container">
         {/* Main Footer Content */}
-        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
           {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Image
-              src="/Winston_Logo_Light.png"
-              alt="Winston Fowlkes"
-              width={160}
-              height={44}
-              className="h-10 w-auto mb-6"
-            />
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-block mb-6">
+              <Image
+                src="/Winston_Logo_Light.png"
+                alt="Winston Fowlkes"
+                width={140}
+                height={38}
+                className="h-8 w-auto"
+              />
+            </Link>
+            <p className="text-grey-400 text-sm leading-relaxed mb-6 max-w-sm">
               Design, build, and automate modern digital systems that actually scale.
             </p>
             <div className="flex gap-3">
@@ -49,7 +51,8 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-[#222] transition-all duration-200 text-xs font-display font-semibold"
+                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-grey-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200 text-xs font-display font-bold"
+                  aria-label={social.label}
                 >
                   {social.icon}
                 </a>
@@ -57,9 +60,12 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Spacer (Desktop) */}
+          <div className="hidden lg:block lg:col-span-1" />
+
           {/* Navigation */}
-          <div>
-            <h4 className="font-display font-semibold text-white mb-6 text-sm uppercase tracking-wider">
+          <div className="lg:col-span-2">
+            <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider mb-6">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -67,7 +73,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-grey-400 hover:text-accent transition-colors text-sm font-medium"
                   >
                     {link.label}
                   </Link>
@@ -77,8 +83,8 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
-            <h4 className="font-display font-semibold text-white mb-6 text-sm uppercase tracking-wider">
+          <div className="lg:col-span-3">
+            <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider mb-6">
               Services
             </h4>
             <ul className="space-y-3">
@@ -86,7 +92,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-grey-400 hover:text-accent transition-colors text-sm font-medium"
                   >
                     {link.label}
                   </Link>
@@ -96,15 +102,15 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-display font-semibold text-white mb-6 text-sm uppercase tracking-wider">
+          <div className="lg:col-span-2">
+            <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider mb-6">
               Contact
             </h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="mailto:winston@winstonfowlkes.com"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                  className="text-grey-400 hover:text-white transition-colors text-sm font-medium block"
                 >
                   winston@winstonfowlkes.com
                 </a>
@@ -112,12 +118,12 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:239-271-8495"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                  className="text-grey-400 hover:text-white transition-colors text-sm font-medium block"
                 >
                   239-271-8495
                 </a>
               </li>
-              <li className="text-gray-400 text-sm">
+              <li className="text-grey-500 text-sm mt-4">
                 Jacksonville, FL
               </li>
             </ul>
@@ -125,13 +131,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-grey-600 text-sm">
             &copy; {new Date().getFullYear()} Winston Fowlkes. All rights reserved.
           </p>
-          <p className="text-gray-600 text-sm">
-            Jacksonville, FL
-          </p>
+          <div className="flex gap-6">
+             <Link href="/privacy" className="text-grey-600 hover:text-grey-400 text-sm transition-colors">Privacy Policy</Link>
+             <Link href="/terms" className="text-grey-600 hover:text-grey-400 text-sm transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

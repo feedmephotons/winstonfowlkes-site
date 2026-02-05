@@ -27,23 +27,21 @@ const metrics = [
 
 export default function Metrics() {
   return (
-    <section className="section relative overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-16 relative">
+    <section className="section bg-black">
+      <div className="container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-16 flex flex-col items-center"
         >
-          <span className="text-sm font-medium text-[#00d4ff] uppercase tracking-wider mb-4 block">
-            Results
-          </span>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+          <p className="section-label">Results</p>
+          <h2 className="section-title">
             Numbers That Matter
           </h2>
-          <p className="text-gray-400 max-w-lg mx-auto">
+          <p className="section-desc">
             Real outcomes from real projects. These metrics represent aggregate results across client engagements.
           </p>
         </motion.div>
@@ -53,24 +51,25 @@ export default function Metrics() {
           {metrics.map((metric, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="card-elevated p-8 text-center"
+              transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
+              whileHover={{ y: -5 }}
+              className="card-elevated p-8 text-center border border-white/5 bg-black-card hover:border-accent/30 group transition-colors duration-300"
             >
               {/* Value */}
-              <div className="font-display font-bold text-4xl md:text-5xl text-white mb-3">
+              <div className="font-display font-bold text-4xl md:text-5xl text-white mb-4 group-hover:text-accent transition-colors duration-300">
                 {metric.value}
               </div>
 
               {/* Label */}
-              <p className="text-gray-300 text-sm font-medium mb-2">
+              <p className="text-grey-300 text-sm font-medium mb-2 leading-snug">
                 {metric.label}
               </p>
 
               {/* Context */}
-              <p className="text-gray-500 text-xs">
+              <p className="text-grey-500 text-xs uppercase tracking-wide">
                 {metric.context}
               </p>
             </motion.div>
@@ -83,7 +82,7 @@ export default function Metrics() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center text-gray-600 text-xs mt-8"
+          className="text-center text-grey-600 text-xs mt-12"
         >
           Results vary by project scope and industry. These figures represent best-case outcomes.
         </motion.p>

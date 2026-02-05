@@ -1,12 +1,21 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export default function FeaturedCaseStudy() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
-    <section className="section relative overflow-hidden bg-[#0d0d0d]">
+    <section className="section bg-black-soft relative overflow-hidden" ref={containerRef}>
       {/* Background */}
       <div className="absolute inset-0">
         <Image
@@ -15,35 +24,30 @@ export default function FeaturedCaseStudy() {
           fill
           className="object-cover opacity-5"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-black-soft via-transparent to-black-soft" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-16 relative">
+      <div className="container relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12"
+          className="mb-12 md:text-center md:flex md:flex-col md:items-center"
         >
-          <span className="text-sm font-medium text-[#00d4ff] uppercase tracking-wider mb-4 block">
-            Featured Work
-          </span>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white">
-            Case Study: Affinity Roofing
-          </h2>
+          <p className="section-label">Featured Work</p>
+          <h2 className="section-title">Case Study: Affinity Roofing</h2>
         </motion.div>
 
         {/* Case Study Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Video/Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: Video */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? y : 0 }}
+            className="relative"
           >
-            <div className="aspect-video rounded-xl overflow-hidden card-elevated">
+            <div className="aspect-video rounded-xl overflow-hidden card-elevated shadow-2xl shadow-accent/5 border border-white/10 relative z-10 group">
               <iframe
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                 title="Affinity Roofing Case Study"
@@ -52,6 +56,8 @@ export default function FeaturedCaseStudy() {
                 allowFullScreen
               />
             </div>
+            {/* Decorative Element */}
+            <div className="absolute -inset-4 bg-accent/5 rounded-2xl -z-0 blur-xl opacity-50" />
           </motion.div>
 
           {/* Right: Details */}
@@ -59,24 +65,26 @@ export default function FeaturedCaseStudy() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* Challenge */}
-            <div className="mb-8">
-              <h3 className="font-display font-semibold text-white text-lg mb-3">
+            <div className="mb-8 group">
+              <h3 className="font-display font-semibold text-white text-lg mb-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent/50 group-hover:bg-accent transition-colors" />
                 The Challenge
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-grey-400 text-sm leading-relaxed pl-4 border-l border-white/10 group-hover:border-accent/30 transition-colors">
                 Affinity Roofing needed a complete digital presence overhaul. Their existing marketing wasn&apos;t capturing the quality of their work, and leads weren&apos;t converting.
               </p>
             </div>
 
             {/* Solution */}
-            <div className="mb-8">
-              <h3 className="font-display font-semibold text-white text-lg mb-3">
+            <div className="mb-8 group">
+              <h3 className="font-display font-semibold text-white text-lg mb-2 flex items-center gap-2">
+                 <span className="w-1.5 h-1.5 rounded-full bg-accent/50 group-hover:bg-accent transition-colors" />
                 The Solution
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-grey-400 text-sm leading-relaxed pl-4 border-l border-white/10 group-hover:border-accent/30 transition-colors">
                 Built an integrated system: professional video content showcasing their craftsmanship, a high-converting website, and targeted ad campaigns that pre-qualified leads.
               </p>
             </div>
@@ -87,39 +95,35 @@ export default function FeaturedCaseStudy() {
                 The Results
               </h3>
               <div className="grid grid-cols-3 gap-4">
-                <div className="text-center">
-                  <div className="font-display font-bold text-2xl text-white">3x</div>
-                  <div className="text-gray-500 text-xs mt-1">Lead Volume</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-display font-bold text-2xl text-white">47%</div>
-                  <div className="text-gray-500 text-xs mt-1">Higher Close Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-display font-bold text-2xl text-white">$890K</div>
-                  <div className="text-gray-500 text-xs mt-1">Revenue Attributed</div>
-                </div>
+                {[
+                    { val: '3x', label: 'Lead Volume' },
+                    { val: '47%', label: 'Higher Close Rate' },
+                    { val: '$890K', label: 'Revenue Attributed' }
+                ].map((stat, i) => (
+                    <motion.div 
+                        key={i}
+                        whileHover={{ y: -5 }}
+                        className="text-center p-4 rounded-lg bg-white/5 border border-white/5 hover:border-accent/30 hover:bg-white/10 transition-all duration-300"
+                    >
+                        <div className="font-display font-bold text-2xl text-white mb-1">{stat.val}</div>
+                        <div className="text-grey-500 text-[10px] uppercase tracking-wider">{stat.label}</div>
+                    </motion.div>
+                ))}
               </div>
             </div>
 
             {/* Services Used */}
             <div className="flex flex-wrap gap-2 mb-8">
               {['Video Production', 'Web Development', 'Paid Advertising', 'SEO'].map((tag) => (
-                <span key={tag} className="tag">
+                <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-black border border-white/10 text-grey-400">
                   {tag}
                 </span>
               ))}
             </div>
 
             {/* CTA */}
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-            >
+            <Link href="/work" className="btn-secondary text-sm px-6 py-2.5">
               View All Case Studies
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </Link>
           </motion.div>
         </div>

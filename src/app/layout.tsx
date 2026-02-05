@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#0a0a0a] text-white">
+      <body className="antialiased bg-black text-white">
         {/* Noise Overlay */}
         <div className="noise-overlay" />
 
