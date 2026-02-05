@@ -49,7 +49,7 @@ export default function FeaturedCaseStudy() {
           >
             <div className="aspect-video rounded-xl overflow-hidden card-elevated shadow-2xl shadow-accent/5 border border-white/10 relative z-10 group">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/e9SFC_EQ7VQ"
                 title="Affinity Roofing Case Study"
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

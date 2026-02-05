@@ -3,42 +3,55 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
+// Real testimonials from Winston Fowlkes clients
 const testimonials = [
   {
     name: 'Rast Bryant',
     title: 'Owner, Lloyd Roofing',
-    quote: "Winston has an uncanny ability to execute on poorly described high level concepts. He just gets it and delivers beyond expectations.",
+    quote: "Winston can take a poorly described concept and make it exactly what we're looking for. He just gets it and delivers beyond expectations every time.",
     category: 'Video & Marketing',
   },
   {
     name: 'Weston Beckwith',
     title: 'Creative Director',
-    quote: "Winston has an enormous amount of talent and resources. He's the rare creative who can execute across every medium with equal skill.",
+    quote: "You've found it — an enormous amount of talent and resources. Winston is the rare creative who can execute across every medium with equal skill.",
     category: 'Creative Systems',
   },
   {
     name: 'Emily DiRoma',
     title: 'Graphic Designer',
-    quote: "It doesn't matter what type of project you bring to Winston — the quality is always top notch. Consistent excellence across the board.",
+    quote: "It doesn't matter what type of project you bring to Winston — he's the real deal. Consistent excellence across the board.",
     category: 'Design',
   },
   {
     name: 'Joshua Voisin',
     title: 'Owner, Inspect LA',
-    quote: "Highly recommend Winston for website and marketing. He understood our business and built systems that actually work for us.",
+    quote: "Winston is the go-to for all website and marketing needs. He understood our business and built systems that actually work.",
     category: 'Web & Marketing',
   },
   {
     name: 'Omar Soto',
     title: 'Owner, Sideline Barbershop',
-    quote: "Best customer service and photography company I've worked with. The video he created brought in more clients than any other marketing we've done.",
+    quote: "Best customer service and photography company I've ever experienced. The video brought in more clients than any other marketing we've done.",
     category: 'Video & Photo',
+  },
+  {
+    name: 'Jason Springs',
+    title: 'Musician',
+    quote: "Every experience ends up above and beyond what I could have pictured. Winston brings ideas to life in ways you didn't even know were possible.",
+    category: 'Music Video',
   },
   {
     name: 'Amanda Keen',
     title: 'Owner, Keen & Co.',
-    quote: "Winston's label design and photography work completely elevated our brand. He sees the big picture and executes on every detail.",
+    quote: "Super happy with the label design and pictures for my website. Winston sees the big picture and executes on every detail.",
     category: 'Brand Design',
+  },
+  {
+    name: 'Joey B',
+    title: 'Web Designer',
+    quote: "This service is out of this world! Always punctual and the quality of work is off the charts. Highly recommend.",
+    category: 'Web Development',
   },
 ];
 

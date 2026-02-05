@@ -4,40 +4,40 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 
-// Video IDs from Winston Fowlkes YouTube channel
+// Real video IDs from Winston Fowlkes YouTube channel
 const videos = [
   {
-    id: 'dQw4w9WgXcQ',
+    id: 'e9SFC_EQ7VQ',
     title: 'Chateau Green Shingle Re-Roof',
     client: 'Affinity Roofing',
     category: 'Commercial',
   },
   {
-    id: 'dQw4w9WgXcQ',
+    id: '4Uw-jnIWdfI',
     title: 'Tile Re-Roof Cape Coral',
     client: 'Affinity Roofing',
     category: 'Commercial',
   },
   {
-    id: 'dQw4w9WgXcQ',
+    id: 'BGjzGHoxveQ',
     title: 'Target Roofing - TPO Flute Fill',
     client: 'Target Roofing',
     category: 'Process',
   },
   {
-    id: 'dQw4w9WgXcQ',
+    id: 'K0iGE3zu1KY',
     title: 'Roofing & Construction Reel',
     client: 'Various Clients',
     category: 'Reel',
   },
   {
-    id: 'dQw4w9WgXcQ',
+    id: '_ZZ62oRd5sM',
     title: 'In Living Color Tattoo',
     client: 'Amber Petaccio',
     category: 'Business Promo',
   },
   {
-    id: 'dQw4w9WgXcQ',
+    id: '4LgswJO8aF8',
     title: 'Sideline Barbershop',
     client: 'Omar Soto',
     category: 'Business Promo',
