@@ -3,25 +3,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
-  
-  --color-black: #0a0a0a;
-  --color-black-soft: #0d0d0d;
-  --color-black-card: #141414;
-  
-  --color-grey-900: #1a1a1a;
-  --color-grey-800: #262626;
-  --color-grey-700: #404040;
-  --color-grey-600: #525252;
-  --color-grey-500: #737373;
-  --color-grey-400: #a3a3a3;
-  --color-grey-300: #d4d4d4;
-  
-  --color-accent: #00d4ff;
-  --color-accent-muted: rgba(0, 212, 255, 0.15);
-  --color-accent-subtle: rgba(0, 212, 255, 0.08);
+  /* Colors - Light Theme */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+
+  --color-white: #ffffff;
+  --color-surface: #f8fafc;
+  --color-surface-raised: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  /* Dark sections (hero, CTA, footer) */
+  --color-navy: #0f172a;
+  --color-navy-light: #1e293b;
+  --color-navy-card: #1e293b;
+
+  /* Text */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-text-light: #cbd5e1;
+
+  /* Accent */
+  --color-accent: #0ea5e9;
+  --color-accent-dark: #0284c7;
+  --color-accent-muted: rgba(14, 165, 233, 0.12);
+  --color-accent-subtle: rgba(14, 165, 233, 0.06);
 
   /* Fonts */
   --font-display: 'Clash Display', sans-serif;
@@ -51,37 +58,44 @@
 
   ::selection {
     background-color: var(--color-accent);
-    color: var(--color-black);
+    color: white;
   }
 }
 
 /* Component Styles */
 @layer components {
-  /* Container - Native Tailwind container with custom padding */
   .container {
     @apply mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16;
   }
-  
-  /* Section Spacing */
+
   .section {
     @apply py-20 md:py-24;
   }
 
-  /* Cards */
+  /* Light cards */
   .card, .card-elevated {
-    @apply bg-black-card border border-white/5 rounded-xl transition-all duration-200;
+    @apply bg-white border border-border rounded-xl transition-all duration-200;
   }
-  
+
   .card:hover, .card-elevated:hover {
-    @apply border-white/10;
+    @apply border-border shadow-md;
   }
 
   .card-elevated {
-    @apply shadow-lg shadow-black/30;
+    @apply shadow-sm;
   }
-  
+
   .card-elevated:hover {
-    @apply -translate-y-0.5 shadow-xl shadow-black/40;
+    @apply -translate-y-0.5 shadow-lg;
+  }
+
+  /* Dark section cards */
+  .card-dark {
+    @apply bg-navy-card border border-white/10 rounded-xl transition-all duration-200;
+  }
+
+  .card-dark:hover {
+    @apply border-white/20;
   }
 
   /* Buttons */
@@ -90,24 +104,42 @@
   }
 
   .btn-primary {
-    @apply bg-accent text-black font-semibold hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(0,212,255,0.25)] focus-visible:outline-accent;
+    @apply bg-accent text-white font-semibold hover:-translate-y-px hover:bg-accent-dark hover:shadow-lg focus-visible:outline-accent;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-white border border-white/10 hover:border-grey-500 hover:bg-white/5 focus-visible:outline-white;
+    @apply bg-transparent text-text-primary border border-border hover:border-text-muted hover:bg-surface focus-visible:outline-accent;
+  }
+
+  /* Dark variant buttons */
+  .btn-primary-dark {
+    @apply inline-flex items-center justify-center px-7 py-3.5 rounded-lg font-display font-semibold text-[0.9375rem] transition-all duration-200 cursor-pointer whitespace-nowrap bg-accent text-white hover:-translate-y-px hover:bg-accent-dark hover:shadow-lg;
+  }
+
+  .btn-secondary-dark {
+    @apply inline-flex items-center justify-center px-7 py-3.5 rounded-lg font-display font-medium text-[0.9375rem] transition-all duration-200 cursor-pointer whitespace-nowrap bg-transparent text-white border border-white/20 hover:border-white/40 hover:bg-white/5;
   }
 
   /* Typography */
   .section-title {
-    @apply font-display font-bold text-3xl md:text-4xl text-white mb-4 leading-tight;
+    @apply font-display font-bold text-3xl md:text-4xl text-text-primary mb-4 leading-tight;
   }
 
   .section-desc {
-    @apply text-base text-grey-400 max-w-2xl leading-relaxed;
+    @apply text-base text-text-secondary max-w-2xl leading-relaxed;
   }
 
   .section-label {
     @apply text-sm font-medium text-accent uppercase tracking-wider mb-4 block;
+  }
+
+  /* Dark section typography */
+  .section-title-dark {
+    @apply font-display font-bold text-3xl md:text-4xl text-white mb-4 leading-tight;
+  }
+
+  .section-desc-dark {
+    @apply text-base text-text-light max-w-2xl leading-relaxed;
   }
 }
 
@@ -116,20 +148,19 @@
   .text-shadow-sm {
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   }
-  
-  .glass-panel {
-    @apply bg-black/90 backdrop-blur-md border border-white/5;
-  }
+}
 
-  .noise-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 50;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
+/* Strange Music standalone page — hide main site chrome */
+body:has(.strange-music-page) {
+  background-color: #000;
+}
+
+body:has(.strange-music-page) > header,
+body:has(.strange-music-page) > footer {
+  display: none;
+}
+
+body:has(.strange-music-page) ::selection {
+  background-color: #dc2626;
+  color: white;
 }
